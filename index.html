@@ -1,97 +1,311 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Abhinav | Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhinav - AI/ML Engineer & Data Analyst</title>
+    <meta name="description" content="Versatile Data Analyst and Machine Learning Engineer with experience in analyzing datasets, creating predictive models, and building insightful dashboards. Portfolio showcasing innovative AI/ML projects.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
 <body>
-  <header>
-    <nav>
-      <h1>Abhinav</h1>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><button id="theme-toggle">Toggle Theme</button></li>
-      </ul>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">Abhinav</div>
+            <div class="nav-menu">
+                <button onclick="scrollToSection('projects')" class="nav-item">
+                    <i data-lucide="code"></i>
+                    <span>Projects</span>
+                </button>
+                <button onclick="scrollToSection('about')" class="nav-item">
+                    <i data-lucide="user"></i>
+                    <span>About</span>
+                </button>
+                <button onclick="scrollToSection('journey')" class="nav-item">
+                    <i data-lucide="briefcase"></i>
+                    <span>Journey</span>
+                </button>
+                <button onclick="scrollToSection('education')" class="nav-item">
+                    <i data-lucide="graduation-cap"></i>
+                    <span>Education</span>
+                </button>
+                <button onclick="scrollToSection('contact')" class="nav-item">
+                    <i data-lucide="mail"></i>
+                    <span>Contact</span>
+                </button>
+            </div>
+            <div class="nav-social">
+                <a href="https://linkedin.com/in/abhinav" target="_blank" class="social-icon">
+                    <i data-lucide="linkedin"></i>
+                </a>
+                <a href="https://github.com/abhinavkajal" target="_blank" class="social-icon">
+                    <i data-lucide="github"></i>
+                </a>
+            </div>
+        </div>
     </nav>
-  </header>
 
-  <section class="hero">
-    <div class="hero-content">
-      <h2>Hi, I'm Abhinav</h2>
-      <p>Data Analyst & ML Engineer | Turning Data Into Action</p>
-      <a href="#projects" class="btn">View Projects</a>
-    </div>
-  </section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="text-gradient">AI/ML Engineer & Data Analyst</span>
+                </h1>
+                <p class="hero-description">
+                    Versatile Data Analyst and Machine Learning Engineer with experience in analyzing datasets, 
+                    creating predictive models, and building insightful dashboards.
+                </p>
+                <div class="hero-contact">
+                    <div class="contact-item">
+                        <i data-lucide="map-pin"></i>
+                        Saket, New Delhi, India
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="mail"></i>
+                        071abhinav@gmail.com
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="phone"></i>
+                        +91-9138165351
+                    </div>
+                </div>
+            </div>
+            <div class="hero-scroll">
+                <div class="scroll-indicator">
+                    <i data-lucide="chevron-down"></i>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section id="about" class="section">
-    <h2>About Me</h2>
-    <p>
-      I'm a B.Tech CSE student passionate about building intelligent systems and data-driven solutions. I specialize in Python, machine learning, and cloud tools to deliver impactful insights and applications.
-    </p>
-  </section>
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-description">
+                    Innovative solutions combining machine learning, web development, and automation
+                </p>
+            </div>
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Projects will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
 
-  <section id="projects" class="section">
-    <h2>Projects</h2>
-    <div class="project-grid">
-      <div class="project-card">
-        <h3><a href="https://github.com/AbhinavKajal/FaceRecognition-attendance-system" target="_blank">Face Recognition Attendance System</a></h3>
-        <p>Real-time face detection for automatic attendance tracking using OpenCV and Firebase.</p>
-      </div>
-      <div class="project-card">
-        <h3><a href="https://github.com/AbhinavKajal/HandGestureRecoginitionSystem" target="_blank">Hand Gesture Recognition System</a></h3>
-        <p>Gesture-controlled interface using computer vision and contour detection.</p>
-      </div>
-      <div class="project-card">
-        <h3><a href="https://github.com/AbhinavKajal/Python-For-Machine-Learning" target="_blank">Python for Machine Learning</a></h3>
-        <p>Fundamental ML models implemented in Python with scikit-learn and pandas.</p>
-      </div>
-      <div class="project-card">
-        <h3><a href="https://github.com/AbhinavKajal/Stock-Price-Prediction-Model" target="_blank">Stock Price Prediction Model</a></h3>
-        <p>Predictive analytics model using LSTM and Random Forest for stock forecasting.</p>
-      </div>
-      <div class="project-card">
-        <h3><a href="https://github.com/AbhinavKajal/VaccinationPredictionMod" target="_blank">Vaccination Prediction Model</a></h3>
-        <p>Data-driven model to forecast vaccination rates using regression techniques.</p>
-      </div>
-    </div>
-  </section>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">About Me</h2>
+                    <p class="about-paragraph">
+                        I'm a versatile Data Analyst and Machine Learning Engineer with a passion for analyzing datasets, 
+                        creating predictive models, and building insightful dashboards. I excel at using Python, Power BI, 
+                        and statistical methods to drive data-informed decision-making.
+                    </p>
+                    <p class="about-paragraph">
+                        My expertise spans across machine learning, web development, and automation, allowing me to solve 
+                        real-world problems with intelligent systems and innovative solutions.
+                    </p>
+                    
+                    <!-- Work Experience -->
+                    <div class="experience">
+                        <h3 class="experience-title">Work Experience</h3>
+                        <div class="experience-card">
+                            <div class="experience-header">
+                                <h4 class="experience-role">Data Science Intern</h4>
+                                <span class="experience-period">Jul 2023 - Aug 2023</span>
+                            </div>
+                            <p class="experience-company">YHills | Remote</p>
+                            <ul class="experience-list">
+                                <li>Built predictive models (Boston Taxi Fare, Vaccination Status) using Scikit-learn, XGBoost, Random Forest</li>
+                                <li>Performed data cleaning, EDA, and model evaluation to enhance prediction accuracy</li>
+                                <li>Used Python, Pandas, NumPy, Matplotlib, Seaborn, Git</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skills-section">
+                    <div class="skills-card">
+                        <h3 class="skills-title">Core Skills</h3>
+                        <div class="skills-grid" id="skillsGrid">
+                            <!-- Skills will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section id="skills" class="section">
-    <h2>Skills</h2>
-    <ul class="skills-list">
-      <li>Python</li>
-      <li>Power BI</li>
-      <li>Machine Learning</li>
-      <li>SQL</li>
-      <li>Flask</li>
-      <li>Git & GitHub</li>
-      <li>Java</li>
-      <li>Firebase</li>
-      <li>HTML & CSS</li>
-      <li>OpenCV</li>
-    </ul>
-  </section>
+    <!-- Journey Section -->
+    <section id="journey" class="journey">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">My Journey</h2>
+                <p class="section-description">
+                    From curiosity in technology to specializing in AI and machine learning
+                </p>
+            </div>
+            <div class="journey-timeline" id="journeyTimeline">
+                <!-- Journey will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
 
-  <section id="contact" class="section">
-    <h2>Contact</h2>
-    <p>Let’s build something together! Reach me at:</p>
-    <ul class="contact-info">
-      <li>Email: <a href="mailto:071abhinav@gmail.com">071abhinav@gmail.com</a></li>
-      <li>Phone: +91-9138165351</li>
-      <li><a href="https://linkedin.com/in/abhinav-kajal-9b353b2a9" target="_blank">LinkedIn</a></li>
-    </ul>
-  </section>
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Education</h2>
+            </div>
+            <div class="education-content">
+                <div class="education-card">
+                    <div class="education-header">
+                        <div>
+                            <h3 class="education-degree">B.Tech in Computer Science & Engineering</h3>
+                            <p class="education-university">MDU, Rohtak</p>
+                        </div>
+                        <div class="education-details">
+                            <p class="education-gpa">CGPA: 7.59/10</p>
+                            <p class="education-period">Jul 2022 – Present</p>
+                        </div>
+                    </div>
+                    <div class="coursework">
+                        <h4 class="coursework-title">Relevant Coursework</h4>
+                        <div class="coursework-tags" id="courseworkTags">
+                            <!-- Coursework will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Certificates -->
+            <div class="certificates">
+                <h3 class="certificates-title">Certificates</h3>
+                <div class="certificates-grid" id="certificatesGrid">
+                    <!-- Certificates will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <footer>
-    <p>&copy; 2025 Abhinav Kajal. All rights reserved.</p>
-  </footer>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Let's Connect</h2>
+                <p class="section-description">
+                    Ready to collaborate on innovative projects or discuss opportunities? Let's start a conversation.
+                </p>
+            </div>
+            <div class="contact-content">
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <h3 class="contact-subtitle">Get in Touch</h3>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i data-lucide="mail"></i>
+                            </div>
+                            <div>
+                                <p class="contact-label">Email</p>
+                                <a href="mailto:071abhinav@gmail.com" class="contact-link">071abhinav@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i data-lucide="phone"></i>
+                            </div>
+                            <div>
+                                <p class="contact-label">Phone</p>
+                                <a href="tel:+919138165351" class="contact-link">+91-9138165351</a>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i data-lucide="map-pin"></i>
+                            </div>
+                            <div>
+                                <p class="contact-label">Location</p>
+                                <p class="contact-text">Saket, New Delhi, India</p>
+                            </div>
+                        </div>
+                        <div class="contact-social">
+                            <a href="https://linkedin.com/in/abhinav" target="_blank" class="social-link">
+                                <i data-lucide="linkedin"></i>
+                            </a>
+                            <a href="https://github.com/abhinavkajal" target="_blank" class="social-link">
+                                <i data-lucide="github"></i>
+                            </a>
+                            <a href="https://abhinavkajal.github.io" target="_blank" class="social-link">
+                                <i data-lucide="globe"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn" id="submitBtn">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <script src="script.js"></script>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Abhinav</div>
+                <p class="footer-description">
+                    AI/ML Engineer & Data Analyst | Building intelligent solutions for tomorrow
+                </p>
+                <div class="footer-social">
+                    <a href="https://linkedin.com/in/abhinav" target="_blank" class="footer-social-link">
+                        <i data-lucide="linkedin"></i>
+                    </a>
+                    <a href="https://github.com/abhinavkajal" target="_blank" class="footer-social-link">
+                        <i data-lucide="github"></i>
+                    </a>
+                    <a href="https://abhinavkajal.github.io" target="_blank" class="footer-social-link">
+                        <i data-lucide="globe"></i>
+                    </a>
+                    <a href="mailto:071abhinav@gmail.com" class="footer-social-link">
+                        <i data-lucide="mail"></i>
+                    </a>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Abhinav. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

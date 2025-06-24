@@ -1,4 +1,4 @@
-// Data
+// Data with local image paths
 const projects = [
     {
         title: "Attendance Tracker",
@@ -6,9 +6,9 @@ const projects = [
         description: "Face recognition–based attendance system with real-time database syncing using Firebase.",
         technologies: ["Python", "Firebase", "Computer Vision"],
         images: [
-            "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
-            "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
-            "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400"
+            "images/attendance-1.jpg",
+            "images/attendance-2.jpg", 
+            "images/attendance-3.jpg"
         ],
         link: "https://github.com/abhinavkajal/attendance-tracker",
         demo: "Face Recognition System"
@@ -19,9 +19,9 @@ const projects = [
         description: "Web app that summarizes GitHub portfolios using NLP and prompt engineering.",
         technologies: ["NLP", "LangChain", "Streamlit"],
         images: [
-            "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
-            "https://images.unsplash.com/photo-1516110833967-0b5716ca75b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
-            "https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400"
+            "images/ai-portfolio-1.jpg",
+            "images/ai-portfolio-2.jpg",
+            "images/ai-portfolio-3.jpg"
         ],
         link: "https://github.com/abhinavkajal/ai-portfolio-assistant",
         demo: "GitHub Portfolio AI"
@@ -32,9 +32,9 @@ const projects = [
         description: "Real-time task tracking with JWT authentication and user dashboards built with MERN stack.",
         technologies: ["MongoDB", "React", "Node.js"],
         images: [
-            "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
-            "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
-            "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400"
+            "images/task-management-1.jpg",
+            "images/task-management-2.jpg",
+            "images/task-management-3.jpg"
         ],
         link: "https://github.com/abhinavkajal/task-management-app",
         demo: "MERN Stack Dashboard"
@@ -45,9 +45,9 @@ const projects = [
         description: "Integrated image and structured data using a multimodal ML approach for price prediction.",
         technologies: ["CNN", "Scikit-learn", "Pandas"],
         images: [
-            "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
-            "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
-            "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400"
+            "images/house-price-1.jpg",
+            "images/house-price-2.jpg",
+            "images/house-price-3.jpg"
         ],
         link: "https://github.com/abhinavkajal/house-price-prediction",
         demo: "ML Price Predictor"

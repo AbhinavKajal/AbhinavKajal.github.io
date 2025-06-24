@@ -983,6 +983,16 @@ body {
 .tech-cnn { background: rgba(168, 85, 247, 0.1); color: #a855f7; }
 .tech-scikit-learn { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
 .tech-pandas { background: rgba(34, 197, 94, 0.1); color: #22c55e; }
+.tech-java { background: rgba(239, 68, 68, 0.1); color: #ef4444; }
+.tech-javascript { background: rgba(234, 179, 8, 0.1); color: #eab308; }
+.tech-sql { background: rgba(99, 102, 241, 0.1); color: #6366f1; }
+.tech-tensorflow { background: rgba(251, 146, 60, 0.1); color: #fb923c; }
+.tech-express { background: rgba(107, 114, 128, 0.1); color: #374151; }
+.tech-numpy { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+.tech-matplotlib { background: rgba(34, 197, 94, 0.1); color: #22c55e; }
+.tech-seaborn { background: rgba(168, 85, 247, 0.1); color: #a855f7; }
+.tech-git { background: rgba(239, 68, 68, 0.1); color: #ef4444; }
+.tech-power-bi { background: rgba(234, 179, 8, 0.1); color: #eab308; }
 
 /* Course Colors */
 .course-compiler-design { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }

@@ -34,7 +34,7 @@ body {
 
 /* Utility Classes */
 .text-gradient {
-    background: linear-gradient(135deg, var(--primary-purple), var(--primary-orange));
+    background: linear-gradient(135deg, #a855f7, #fb923c);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -87,9 +87,10 @@ body {
 .nav-logo {
     font-size: 1.5rem;
     font-weight: 700;
-    background: linear-gradient(135deg, var(--primary-purple), var(--primary-orange));
+    background: linear-gradient(135deg, #a855f7, #fb923c);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .nav-menu {
@@ -127,19 +128,27 @@ body {
 .social-icon {
     width: 40px;
     height: 40px;
-    background: #f3f4f6;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    color: var(--text-secondary);
     transition: all 0.3s ease;
+}
+
+.social-icon:nth-child(1) {
+    background: rgba(59, 130, 246, 0.1);
+    color: #3b82f6;
+}
+
+.social-icon:nth-child(2) {
+    background: rgba(107, 114, 128, 0.1);
+    color: #374151;
 }
 
 .social-icon:hover {
     transform: scale(1.1);
-    background: #e5e7eb;
+    box-shadow: var(--shadow-medium);
 }
 
 /* Hero Section */
@@ -200,7 +209,7 @@ body {
     width: 64px;
     height: 64px;
     margin: 0 auto;
-    background: linear-gradient(135deg, var(--primary-purple), var(--primary-orange));
+    background: linear-gradient(135deg, #a855f7, #fb923c);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -275,7 +284,7 @@ body {
     position: absolute;
     top: 12px;
     left: 12px;
-    background: var(--primary-purple);
+    background: #a855f7;
     color: white;
     padding: 0.5rem 0.75rem;
     border-radius: 9999px;
@@ -580,7 +589,7 @@ body {
     transform: translateX(-50%);
     width: 2px;
     height: 100%;
-    background: linear-gradient(to bottom, var(--primary-purple), var(--primary-orange));
+    background: linear-gradient(to bottom, #a855f7, #fb923c);
 }
 
 .journey-item {
@@ -610,12 +619,14 @@ body {
 .journey-dot {
     width: 16px;
     height: 16px;
-    background: linear-gradient(135deg, var(--primary-purple), var(--primary-orange));
+    background: linear-gradient(135deg, #a855f7, #fb923c);
     border-radius: 50%;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
+    border: 3px solid white;
+    box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.2);
 }
 
 .journey-title {
@@ -792,7 +803,7 @@ body {
 .contact-icon {
     width: 48px;
     height: 48px;
-    background: linear-gradient(135deg, var(--primary-purple), var(--primary-orange));
+    background: linear-gradient(135deg, #a855f7, #fb923c);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -848,7 +859,7 @@ body {
 }
 
 .social-link:nth-child(3) {
-    background: linear-gradient(135deg, var(--primary-purple), var(--primary-orange));
+    background: linear-gradient(135deg, #a855f7, #fb923c);
     color: white;
 }
 
@@ -896,7 +907,7 @@ body {
 }
 
 .submit-btn {
-    background: linear-gradient(135deg, var(--primary-purple), var(--primary-orange));
+    background: linear-gradient(135deg, #a855f7, #fb923c);
     color: white;
     border: none;
     padding: 0.75rem 1.5rem;
@@ -933,9 +944,10 @@ body {
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--primary-purple), var(--primary-orange));
+    background: linear-gradient(135deg, #a855f7, #fb923c);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .footer-description {

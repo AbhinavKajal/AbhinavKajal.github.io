@@ -1,465 +1,536 @@
-// Data with local image paths
-const projects = [
-    {
-        title: "Attendance Tracker",
-        period: "Dec 2024 - Jan 2025",
-        description: "Face recognition–based attendance system with real-time database syncing using Firebase.",
-        technologies: ["Python", "Firebase", "Computer Vision"],
-        images: [
-            "images/attendance-1.jpg",
-            "images/attendance-2.jpg", 
-            "images/attendance-3.jpg"
-        ],
-        link: "https://github.com/abhinavkajal/attendance-tracker",
-        demo: "Face Recognition System"
-    },
-    {
-        title: "AI Portfolio Assistant",
-        period: "Apr 2024",
-        description: "Web app that summarizes GitHub portfolios using NLP and prompt engineering.",
-        technologies: ["NLP", "LangChain", "Streamlit"],
-        images: [
-            "images/ai-portfolio-1.jpg",
-            "images/ai-portfolio-2.jpg",
-            "images/ai-portfolio-3.jpg"
-        ],
-        link: "https://github.com/abhinavkajal/ai-portfolio-assistant",
-        demo: "GitHub Portfolio AI"
-    },
-    {
-        title: "Task Management App",
-        period: "Jan 2024 - Feb 2024",
-        description: "Real-time task tracking with JWT authentication and user dashboards built with MERN stack.",
-        technologies: ["MongoDB", "React", "Node.js"],
-        images: [
-            "images/task-management-1.jpg",
-            "images/task-management-2.jpg",
-            "images/task-management-3.jpg"
-        ],
-        link: "https://github.com/abhinavkajal/task-management-app",
-        demo: "MERN Stack Dashboard"
-    },
-    {
-        title: "House Price Prediction",
-        period: "Oct 2023",
-        description: "Integrated image and structured data using a multimodal ML approach for price prediction.",
-        technologies: ["CNN", "Scikit-learn", "Pandas"],
-        images: [
-            "images/house-price-1.jpg",
-            "images/house-price-2.jpg",
-            "images/house-price-3.jpg"
-        ],
-        link: "https://github.com/abhinavkajal/house-price-prediction",
-        demo: "ML Price Predictor"
-    }
-];
+// ============================================
+// INITIALIZATION
+// ============================================
 
-const skills = {
-    "Programming Languages": ["Python", "Java", "JavaScript", "SQL"],
-    "Machine Learning": ["Scikit-learn", "TensorFlow", "Computer Vision", "NLP"],
-    "Web Development": ["React", "Node.js", "Express", "MongoDB"],
-    "Data Analysis": ["Pandas", "NumPy", "Matplotlib", "Seaborn"],
-    "Tools & Platforms": ["Git", "Firebase", "Power BI", "Streamlit"]
-};
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    initLoader();
+    initSmoothScroll();
+    initCursor();
+    initNavigation();
+    initAnimations();
+    initMagneticButtons();
+    initContactForm();
+    initNoiseCanvas();
+});
 
-const journeyItems = [
-    {
-        title: "Started B.Tech in Computer Science",
-        description: "Began my formal education in computer science, building foundation in programming and algorithms.",
-        period: "Jul 2022",
-        type: "academic"
-    },
-    {
-        title: "Data Science Internship at YHills",
-        description: "Built predictive models using machine learning algorithms, gained hands-on experience with real datasets.",
-        period: "Jul-Aug 2023",
-        type: "internship"
-    },
-    {
-        title: "Full-Stack Development Focus",
-        description: "Expanded into web development, learning React, Node.js, and building complete applications.",
-        period: "Jan 2024",
-        type: "development"
-    },
-    {
-        title: "AI/ML Specialization",
-        description: "Focused on advanced machine learning, computer vision, and NLP projects with real-world applications.",
-        period: "Present",
-        type: "specialization"
-    }
-];
+// ============================================
+// LOADING SCREEN
+// ============================================
 
-const coursework = [
-    "Compiler Design",
-    "Artificial Intelligence",
-    "Advanced Java",
-    "Data Structures & Algorithms",
-    "Computer Networks",
-    "Python Programming",
-    "Object Oriented Programming"
-];
-
-const certificates = [
-    {
-        title: "Machine Learning Fundamentals",
-        description: "Comprehensive course covering supervised and unsupervised learning algorithms",
-        organization: "Coursera",
-        date: "2024"
-    },
-    {
-        title: "Python for Data Science",
-        description: "Advanced Python programming for data analysis and visualization",
-        organization: "DataCamp",
-        date: "2023"
-    },
-    {
-        title: "Web Development Bootcamp",
-        description: "Full-stack web development using modern frameworks and tools",
-        organization: "Udemy",
-        date: "2024"
-    }
-];
-
-// State management for project cards
-const projectStates = {};
-
-// Utility functions
-function getTechClass(tech) {
-    return `tech-${tech.toLowerCase().replace(/[^a-z0-9]/g, '-')}`;
-}
-
-function getCourseClass(course) {
-    return `course-${course.toLowerCase().replace(/[^a-z0-9]/g, '-')}`;
-}
-
-function getJourneyClass(type) {
-    return `journey-${type}`;
-}
-
-// Navigation
-function scrollToSection(sectionId) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-    }
-}
-
-// Project card functionality
-function createProjectCard(project, index) {
-    projectStates[index] = {
-        currentImageIndex: 0,
-        isHovered: false
-    };
-
-    return `
-        <div class="project-card" onmouseenter="handleProjectHover(${index}, true)" onmouseleave="handleProjectHover(${index}, false)">
-            <div class="project-image-container" onclick="handleImageClick(${index})" onwheel="handleImageWheel(event, ${index})">
-                <img src="${project.images[0]}" alt="${project.title} interface 1" class="project-image" id="project-image-${index}">
-                
-                <div class="project-overlay" id="project-overlay-${index}"></div>
-                
-                <div class="project-demo-badge" id="project-demo-${index}">${project.demo}</div>
-                
-                <div class="project-nav-arrows" id="project-nav-${index}" style="display: none;">
-                    <button class="project-nav-btn project-nav-left" onclick="navigateImage(${index}, -1)">
-                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                        </svg>
-                    </button>
-                    <button class="project-nav-btn project-nav-right" onclick="navigateImage(${index}, 1)">
-                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </button>
-                </div>
-                
-                <div class="project-indicators">
-                    ${project.images.map((_, i) => `
-                        <button class="project-indicator ${i === 0 ? 'active' : ''}" 
-                                onclick="setImageIndex(${index}, ${i})" 
-                                id="indicator-${index}-${i}"></button>
-                    `).join('')}
-                </div>
-            </div>
+function initLoader() {
+    const loadingScreen = document.querySelector('.loading-screen');
+    const loadingCounter = document.querySelector('.loading-counter');
+    let count = 0;
+    
+    const counter = setInterval(() => {
+        count += Math.floor(Math.random() * 10) + 1;
+        if (count >= 100) {
+            count = 100;
+            clearInterval(counter);
             
-            <div class="project-content">
-                <div class="project-header">
-                    <h3 class="project-title">${project.title}</h3>
-                    <span class="project-period">${project.period}</span>
-                </div>
-                <p class="project-description">${project.description}</p>
-                <div class="project-technologies">
-                    ${project.technologies.map(tech => `
-                        <span class="tech-tag ${getTechClass(tech)}">${tech}</span>
-                    `).join('')}
-                </div>
-                <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="project-link">
-                    View Project
-                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                    </svg>
-                </a>
-            </div>
-        </div>
-    `;
-}
-
-function handleProjectHover(index, isHovered) {
-    projectStates[index].isHovered = isHovered;
-    const navElement = document.getElementById(`project-nav-${index}`);
-    if (navElement) {
-        navElement.style.display = isHovered ? 'block' : 'none';
-    }
-}
-
-function handleImageClick(index) {
-    const project = projects[index];
-    const state = projectStates[index];
-    const nextIndex = (state.currentImageIndex + 1) % project.images.length;
-    setImageIndex(index, nextIndex);
-}
-
-function handleImageWheel(event, index) {
-    event.preventDefault();
-    const delta = event.deltaY;
-    const direction = delta > 0 ? 1 : -1;
-    navigateImage(index, direction);
-}
-
-function navigateImage(index, direction) {
-    const project = projects[index];
-    const state = projectStates[index];
-    let newIndex = state.currentImageIndex + direction;
-    
-    if (newIndex < 0) newIndex = project.images.length - 1;
-    if (newIndex >= project.images.length) newIndex = 0;
-    
-    setImageIndex(index, newIndex);
-}
-
-function setImageIndex(index, imageIndex) {
-    const project = projects[index];
-    const state = projectStates[index];
-    
-    if (imageIndex < 0 || imageIndex >= project.images.length) return;
-    
-    state.currentImageIndex = imageIndex;
-    
-    const imageElement = document.getElementById(`project-image-${index}`);
-    if (imageElement) {
-        imageElement.src = project.images[imageIndex];
-        imageElement.alt = `${project.title} interface ${imageIndex + 1}`;
-    }
-    
-    // Update indicators
-    project.images.forEach((_, i) => {
-        const indicator = document.getElementById(`indicator-${index}-${i}`);
-        if (indicator) {
-            indicator.classList.toggle('active', i === imageIndex);
+            // Fade out loading screen
+            gsap.to(loadingScreen, {
+                opacity: 0,
+                duration: 0.8,
+                delay: 0.3,
+                ease: 'power2.inOut',
+                onComplete: () => {
+                    loadingScreen.style.display = 'none';
+                    document.body.style.overflow = 'visible';
+                    initHeroAnimation();
+                }
+            });
         }
+        loadingCounter.textContent = count;
+    }, 50);
+}
+
+// ============================================
+// SMOOTH SCROLL (Lenis)
+// ============================================
+
+function initSmoothScroll() {
+    const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smooth: true,
+        mouseMultiplier: 1,
+        smoothTouch: false,
+        touchMultiplier: 2,
+        infinite: false
+    });
+
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Update ScrollTrigger on Lenis scroll
+    lenis.on('scroll', () => {
+        ScrollTrigger.update();
+    });
+
+    // Smooth scroll to sections
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                lenis.scrollTo(target, {
+                    offset: 0,
+                    duration: 1.5
+                });
+            }
+        });
+    });
+
+    // Store lenis instance globally
+    window.lenis = lenis;
+}
+
+// ============================================
+// CUSTOM CURSOR
+// ============================================
+
+function initCursor() {
+    if (window.innerWidth <= 1024) return;
+
+    const cursor = document.querySelector('.cursor');
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorCircle = document.querySelector('.cursor-circle');
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let cursorX = 0;
+    let cursorY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    function animate() {
+        const speed = 0.15;
+        cursorX += (mouseX - cursorX) * speed;
+        cursorY += (mouseY - cursorY) * speed;
+
+        cursorDot.style.left = cursorX + 'px';
+        cursorDot.style.top = cursorY + 'px';
+        cursorCircle.style.left = cursorX + 'px';
+        cursorCircle.style.top = cursorY + 'px';
+
+        requestAnimationFrame(animate);
+    }
+    animate();
+
+    // Cursor interactions
+    const hoverElements = document.querySelectorAll('a, button, .project-card');
+    
+    hoverElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursorCircle.classList.add('cursor-hover');
+            cursorDot.style.width = '12px';
+            cursorDot.style.height = '12px';
+        });
+        
+        el.addEventListener('mouseleave', () => {
+            cursorCircle.classList.remove('cursor-hover');
+            cursorDot.style.width = '8px';
+            cursorDot.style.height = '8px';
+        });
     });
 }
 
-// Skills section
-function createSkillsGrid() {
-    return Object.entries(skills).map(([category, skillList]) => `
-        <div class="skills-category">
-            <h4 class="skills-category-title">${category}</h4>
-            <div class="skills-tags">
-                ${skillList.map(skill => `
-                    <span class="skill-tag ${getTechClass(skill)}">${skill}</span>
-                `).join('')}
-            </div>
-        </div>
-    `).join('');
+// ============================================
+// NAVIGATION
+// ============================================
+
+function initNavigation() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menuOverlay = document.querySelector('.menu-overlay');
+    const menuLinks = document.querySelectorAll('.menu-link');
+    let menuOpen = false;
+
+    menuToggle.addEventListener('click', () => {
+        menuOpen = !menuOpen;
+        menuToggle.classList.toggle('active');
+        menuOverlay.classList.toggle('active');
+
+        if (menuOpen) {
+            // Animate menu links in
+            gsap.fromTo(menuLinks,
+                { y: 100, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    stagger: 0.1,
+                    ease: 'power3.out'
+                }
+            );
+        }
+    });
+
+    // Close menu when clicking a link
+    menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            menuOpen = false;
+            menuToggle.classList.remove('active');
+            menuOverlay.classList.remove('active');
+        });
+    });
+
+    // Back to top
+    document.querySelector('.back-to-top').addEventListener('click', () => {
+        window.lenis.scrollTo(0, { duration: 2 });
+    });
 }
 
-// Journey section
-function createJourneyTimeline() {
-    return journeyItems.map((item, index) => `
-        <div class="journey-item">
-            <div class="journey-content ${getJourneyClass(item.type)} ${index % 2 === 0 ? 'journey-left' : 'journey-right'}">
-                <h4 class="journey-title">${item.title}</h4>
-                <p class="journey-description">${item.description}</p>
-                <span class="journey-period">${item.period}</span>
-            </div>
-            <div class="journey-dot"></div>
-        </div>
-    `).join('');
-}
+// ============================================
+// HERO ANIMATION
+// ============================================
 
-// Coursework section
-function createCourseworkTags() {
-    return coursework.map(course => `
-        <span class="skill-tag ${getCourseClass(course)}">${course}</span>
-    `).join('');
-}
-
-// Certificates section
-function createCertificatesGrid() {
-    return certificates.map(cert => `
-        <div class="certificate-card">
-            <h4 class="certificate-title">${cert.title}</h4>
-            <p class="certificate-description">${cert.description}</p>
-            <div class="certificate-organization">${cert.organization}</div>
-            <span class="certificate-date">${cert.date}</span>
-        </div>
-    `).join('');
-}
-
-// Contact form handling
-function handleContactForm() {
-    const form = document.getElementById('contactForm');
-    const submitBtn = document.getElementById('submitBtn');
+function initHeroAnimation() {
+    const heroTitle = document.querySelector('.hero-title');
+    const titleLines = heroTitle.querySelectorAll('.title-line');
     
+    // Split text into characters for animation
+    titleLines.forEach(line => {
+        const text = line.textContent;
+        line.innerHTML = '';
+        
+        text.split('').forEach(char => {
+            const span = document.createElement('span');
+            span.textContent = char === ' ' ? '\u00A0' : char;
+            span.style.display = 'inline-block';
+            line.appendChild(span);
+        });
+    });
+
+    // Animate hero elements
+    const tl = gsap.timeline();
+    
+    tl.from('.hero-badge', {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power3.out'
+    })
+    .from('.title-line:nth-child(1) span', {
+        y: 100,
+        opacity: 0,
+        rotationX: -90,
+        duration: 1,
+        stagger: 0.03,
+        ease: 'power4.out'
+    }, '-=0.3')
+    .from('.title-line:nth-child(2) span', {
+        y: 100,
+        opacity: 0,
+        rotationX: -90,
+        duration: 1,
+        stagger: 0.03,
+        ease: 'power4.out'
+    }, '-=0.7')
+    .from('.title-line:nth-child(3) span', {
+        y: 100,
+        opacity: 0,
+        rotationX: -90,
+        duration: 1,
+        stagger: 0.03,
+        ease: 'power4.out'
+    }, '-=0.7')
+    .from('.hero-subtitle', {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power3.out'
+    }, '-=0.5')
+    .from('.hero-stats', {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power3.out'
+    }, '-=0.5')
+    .from('.hero-cta', {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power3.out'
+    }, '-=0.5')
+    .from('.scroll-indicator', {
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power3.out'
+    }, '-=0.3');
+}
+
+// ============================================
+// SCROLL ANIMATIONS
+// ============================================
+
+function initAnimations() {
+    // Register ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animate section titles
+    const sectionTitles = document.querySelectorAll('.section-title');
+    sectionTitles.forEach(title => {
+        const words = title.querySelectorAll('.title-word');
+        
+        words.forEach((word, i) => {
+            const text = word.textContent;
+            word.innerHTML = '';
+            
+            text.split('').forEach(char => {
+                const span = document.createElement('span');
+                span.textContent = char === ' ' ? '\u00A0' : char;
+                span.style.display = 'inline-block';
+                word.appendChild(span);
+            });
+        });
+
+        gsap.from(words, {
+            scrollTrigger: {
+                trigger: title,
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            },
+            y: 100,
+            opacity: 0,
+            rotationX: -90,
+            stagger: {
+                each: 0.05,
+                from: 'start'
+            },
+            duration: 1,
+            ease: 'power4.out'
+        });
+    });
+
+    // Animate project cards
+    const projectCards = document.querySelectorAll('.project-card');
+    projectCards.forEach(card => {
+        gsap.from(card, {
+            scrollTrigger: {
+                trigger: card,
+                start: 'top 85%',
+                toggleActions: 'play none none reverse'
+            },
+            y: 100,
+            opacity: 0,
+            duration: 1,
+            ease: 'power3.out'
+        });
+
+        // Parallax on project images
+        const image = card.querySelector('.project-image');
+        gsap.to(image, {
+            scrollTrigger: {
+                trigger: card,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: true
+            },
+            y: -50,
+            ease: 'none'
+        });
+    });
+
+    // Animate paragraphs
+    const paragraphs = document.querySelectorAll('.about-para');
+    paragraphs.forEach((para, i) => {
+        gsap.from(para, {
+            scrollTrigger: {
+                trigger: para,
+                start: 'top 85%',
+                toggleActions: 'play none none reverse'
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            delay: i * 0.1,
+            ease: 'power3.out'
+        });
+    });
+
+    // Animate detail blocks
+    const detailBlocks = document.querySelectorAll('.detail-block');
+    detailBlocks.forEach((block, i) => {
+        gsap.from(block, {
+            scrollTrigger: {
+                trigger: block,
+                start: 'top 85%',
+                toggleActions: 'play none none reverse'
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            delay: i * 0.15,
+            ease: 'power3.out'
+        });
+    });
+
+    // Animate form groups
+    const formGroups = document.querySelectorAll('.form-group');
+    formGroups.forEach((group, i) => {
+        gsap.from(group, {
+            scrollTrigger: {
+                trigger: group,
+                start: 'top 90%',
+                toggleActions: 'play none none reverse'
+            },
+            x: -50,
+            opacity: 0,
+            duration: 0.8,
+            delay: i * 0.1,
+            ease: 'power3.out'
+        });
+    });
+
+    // Parallax on scroll indicator
+    gsap.to('.scroll-line', {
+        scrollTrigger: {
+            trigger: '.hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true
+        },
+        scaleY: 0,
+        transformOrigin: 'top',
+        ease: 'none'
+    });
+}
+
+// ============================================
+// MAGNETIC BUTTONS
+// ============================================
+
+function initMagneticButtons() {
+    if (window.innerWidth <= 1024) return;
+
+    const magneticButtons = document.querySelectorAll('.magnetic-btn');
+    
+    magneticButtons.forEach(button => {
+        button.addEventListener('mousemove', (e) => {
+            const rect = button.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            gsap.to(button, {
+                x: x * 0.3,
+                y: y * 0.3,
+                duration: 0.3,
+                ease: 'power2.out'
+            });
+        });
+        
+        button.addEventListener('mouseleave', () => {
+            gsap.to(button, {
+                x: 0,
+                y: 0,
+                duration: 0.5,
+                ease: 'elastic.out(1, 0.3)'
+            });
+        });
+    });
+}
+
+// ============================================
+// CONTACT FORM
+// ============================================
+
+function initContactForm() {
+    const form = document.getElementById('contactForm');
+    const inputs = form.querySelectorAll('input, textarea');
+    
+    // Auto-resize textarea
+    const textarea = form.querySelector('textarea');
+    textarea.addEventListener('input', function() {
+        this.style.height = 'auto';
+        this.style.height = this.scrollHeight + 'px';
+    });
+    
+    // Add placeholder attribute for CSS :placeholder-shown selector
+    inputs.forEach(input => {
+        input.setAttribute('placeholder', ' ');
+    });
+    
+    // Form submission
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         
+        const submitBtn = form.querySelector('.submit-btn');
+        const originalText = submitBtn.querySelector('span').textContent;
+        
+        // Disable button and show loading state
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
+        submitBtn.querySelector('span').textContent = 'Sending...';
         
-        const formData = new FormData(form);
-        const data = {
-            name: formData.get('name'),
-            email: formData.get('email'),
-            subject: formData.get('subject'),
-            message: formData.get('message')
-        };
+        // Simulate form submission (replace with your actual form handling)
+        await new Promise(resolve => setTimeout(resolve, 2000));
         
-        // Simulate form submission (replace with actual API call)
-        try {
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            
-            // Show success message
-            alert('Message sent successfully! I\'ll get back to you soon.');
+        // Success feedback
+        submitBtn.querySelector('span').textContent = 'Message Sent!';
+        
+        // Reset form after delay
+        setTimeout(() => {
             form.reset();
-        } catch (error) {
-            alert('Failed to send message. Please try again or contact me directly.');
-        } finally {
             submitBtn.disabled = false;
-            submitBtn.textContent = 'Send Message';
-        }
+            submitBtn.querySelector('span').textContent = originalText;
+            
+            // Reset textarea height
+            textarea.style.height = 'auto';
+        }, 3000);
     });
 }
 
-// Scroll animations
-function handleScrollAnimations() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-fade-in-up');
-            }
-        });
-    }, observerOptions);
-    
-    // Observe all sections
-    document.querySelectorAll('section').forEach(section => {
-        observer.observe(section);
-    });
-}
+// ============================================
+// NOISE CANVAS
+// ============================================
 
-// Active navigation highlighting
-function handleActiveNavigation() {
-    const sections = document.querySelectorAll('section[id]');
-    const navItems = document.querySelectorAll('.nav-item');
+function initNoiseCanvas() {
+    const canvas = document.querySelector('.noise-canvas');
+    const ctx = canvas.getContext('2d');
     
-    function updateActiveNav() {
-        let current = '';
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+    
+    function noise() {
+        const imageData = ctx.createImageData(canvas.width, canvas.height);
+        const buffer32 = new Uint32Array(imageData.data.buffer);
+        const len = buffer32.length;
         
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (window.scrollY >= sectionTop - 200) {
-                current = section.getAttribute('id');
+        for (let i = 0; i < len; i++) {
+            if (Math.random() < 0.5) {
+                buffer32[i] = 0xff000000;
             }
-        });
-        
-        navItems.forEach(item => {
-            item.classList.remove('active');
-            const sectionId = item.getAttribute('onclick')?.match(/scrollToSection\('(.+)'\)/)?.[1];
-            if (sectionId === current) {
-                item.classList.add('active');
-            }
-        });
-    }
-    
-    window.addEventListener('scroll', updateActiveNav);
-    updateActiveNav(); // Initial call
-}
-
-// Initialize everything when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize Lucide icons
-    if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
-    }
-    
-    // Populate projects
-    const projectsGrid = document.getElementById('projectsGrid');
-    if (projectsGrid) {
-        projectsGrid.innerHTML = projects.map((project, index) => 
-            createProjectCard(project, index)
-        ).join('');
-    }
-    
-    // Populate skills
-    const skillsGrid = document.getElementById('skillsGrid');
-    if (skillsGrid) {
-        skillsGrid.innerHTML = createSkillsGrid();
-    }
-    
-    // Populate journey
-    const journeyTimeline = document.getElementById('journeyTimeline');
-    if (journeyTimeline) {
-        journeyTimeline.innerHTML = createJourneyTimeline();
-    }
-    
-    // Populate coursework
-    const courseworkTags = document.getElementById('courseworkTags');
-    if (courseworkTags) {
-        courseworkTags.innerHTML = createCourseworkTags();
-    }
-    
-    // Populate certificates
-    const certificatesGrid = document.getElementById('certificatesGrid');
-    if (certificatesGrid) {
-        certificatesGrid.innerHTML = createCertificatesGrid();
-    }
-    
-    // Initialize form handling
-    handleContactForm();
-    
-    // Initialize animations
-    handleScrollAnimations();
-    
-    // Initialize navigation
-    handleActiveNavigation();
-    
-    // Reinitialize Lucide icons after dynamic content
-    setTimeout(() => {
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
         }
-    }, 100);
-});
-
-// Smooth scrolling for hash links
-window.addEventListener('hashchange', () => {
-    const hash = window.location.hash.substring(1);
-    if (hash) {
-        scrollToSection(hash);
+        
+        ctx.putImageData(imageData, 0, 0);
     }
-});
-
-// Handle initial hash on page load
-window.addEventListener('load', () => {
-    const hash = window.location.hash.substring(1);
-    if (hash) {
-        setTimeout(() => scrollToSection(hash), 100);
+    
+    function animate() {
+        noise();
+        requestAnimationFrame(animate);
     }
+    animate();
+}
+
+// ============================================
+// HERO CTA CLICK
+// ============================================
+
+document.querySelector('.hero-cta')?.addEventListener('click', () => {
+    const workSection = document.getElementById('work');
+    window.lenis.scrollTo(workSection, {
+        offset: 0,
+        duration: 1.5
+    });
 });
